@@ -59,7 +59,7 @@ resources:
         # Note, the id is a wildcard path parameter, which can be read from the collection
         # https://firebase.google.com/docs/firestore/extend-with-functions#wildcards-parameters
         resource: projects/${PROJECT_ID}/databases/(default)/documents/${COLLECTION_PATH}/{documentId}
-      runtime: "nodejs16"
+      runtime: "nodejs18"
 
 # In the `params` field, set up your extension's user-configured parameters.
 # Learn more in the docs: https://firebase.google.com/docs/extensions/reference/extension-yaml#params-field

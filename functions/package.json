@@ -10,7 +10,7 @@
 		"watch-tests": "jest --watchAll"
 	},
 	"engines": {
-		"node": "16"
+		"node": "18"
 	},
 	"directories": {
 		"lib": "lib"
