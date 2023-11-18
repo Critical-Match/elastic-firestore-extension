@@ -25,7 +25,7 @@ export const handler = (client: Client) => {
 		if (change.before.exists === false) {
 			functions.logger.info(`Creating document`, { id: change.after.id });
 			try {
-				client.create({
+				client.index({
 					id: change.after.id,
 					index: elasticEngine,
 					body: {...toAppSearch(change.after.data())}
@@ -52,11 +52,11 @@ export const handler = (client: Client) => {
 		} else {
 			functions.logger.info(`Updating document`, { id: change.after.id });
 			try {
-				client.update({
+				client.index({
 					id: change.after.id,
 					index: elasticEngine,
-					body: { doc :{...toAppSearch(change.after.data())}}
-				})
+					body: {...toAppSearch(change.after.data())}
+				});
 			} catch (e) {
 				functions.logger.error(`Error while updating document`, {
 					id: change.after.id,
