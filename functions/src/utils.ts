@@ -17,10 +17,6 @@ export const getElasticClient = () => {
 		auth: {
 			username: username,
 			password: password
-		},
-		headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json'
 		}
 	});
 };

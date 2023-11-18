@@ -28,10 +28,7 @@ export const handler = (client: Client) => {
 				client.create({
 					id: change.after.id,
 					index: elasticEngine,
-					document: {
-						id: change.after.id,
-						...toAppSearch(change.after.data())
-					}
+					body: {...toAppSearch(change.after.data())}
 				});
 			} catch (e) {
 				functions.logger.error(`Error while creating document`, {
@@ -58,10 +55,7 @@ export const handler = (client: Client) => {
 				client.update({
 					id: change.after.id,
 					index: elasticEngine,
-					doc: {
-						id: change.after.id,
-						...toAppSearch(change.after.data())
-					}
+					body: { doc :{...toAppSearch(change.after.data())}}
 				})
 			} catch (e) {
 				functions.logger.error(`Error while updating document`, {
