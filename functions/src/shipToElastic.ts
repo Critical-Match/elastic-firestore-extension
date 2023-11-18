@@ -1,5 +1,4 @@
 import * as functions from "firebase-functions";
-import { toAppSearch } from "./toAppSearch";
 
 import { getElasticClient } from "./utils";
 import { Client } from "@elastic/elasticsearch";
