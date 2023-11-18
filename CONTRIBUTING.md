@@ -1,6 +1,6 @@
 This project was created using document https://firebase.google.com/docs/extensions/alpha/overview-build-extensions. To view the documentation, your google account must be whitelisted by Google.
 
-This repo contains the source for the Elastic App Search Firebase extension, as well as a test Forebase project (`/test_project`) that we can use to test the extension within.
+This repo contains the source for the Elastic Firebase extension, as well as a test Forebase project (`/test_project`) that we can use to test the extension within.
 
 ## Set up the firebase CLI
 
@@ -27,9 +27,9 @@ nvm use
 npm install
 ```
 
-## Set up connection to App Search before running locally
+## Set up connection to Elastic before running locally
 
-1. Set up and run App Search locally.
+1. Set up and run Elastic locally.
 2. Create a new empty engine called 'nationalparks'
 3. In the next section, you'll add the connection details from this instance to `test-params.env`.
 
@@ -98,11 +98,11 @@ Use the script located in the `/load-data` directory. There is a README there de
 
 ## Testing the extension after the emulator is running
 
-In the Firestore emulator, create a collection called "nationalparks" and add a document to it. That document should be syned to your App Search instance.
+In the Firestore emulator, create a collection called "nationalparks" and add a document to it. That document should be syned to your Elastic instance.
 
 You can check the logs to see if it ran in the "Logs" tab of the emulator.
 
-Also, try querying App Search via the search endpoint: http://localhost:5001/nationalparks/us-central1/search?query=rocky
+Also, try querying Elastic via the search endpoint: http://localhost:5001/nationalparks/us-central1/search?query=rocky
 
 ## Publishing
 

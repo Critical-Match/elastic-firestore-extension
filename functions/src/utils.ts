@@ -2,9 +2,9 @@ import * as admin from "firebase-admin";
 import { Client } from "@elastic/elasticsearch";
 
 export const getElasticClient = () => {
-	const url = process.env.APP_SEARCH_URL; // URL of the Elasticsearch instance
-	const username = process.env.APP_SEARCH_API_KEY; // Username for basic auth
-	const password = process.env.APP_SEARCH_API_SECRET; // Password for basic auth
+	const url = process.env.ELASTIC_URL; // URL of the Elasticsearch instance
+	const username = process.env.ELASTIC_API_KEY; // Username for basic auth
+	const password = process.env.ELASTIC_API_SECRET; // Password for basic auth
 
 	// Check if all required environment variables are set
 	if (!url || !username || !password) {

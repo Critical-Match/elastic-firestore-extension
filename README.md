@@ -1,14 +1,16 @@
-# Elastic App Search extension for Firestore
+# ElasticSearch (v7.x) extension for Firestore
 
-This extension syncs data from Google's [Cloud Firestore](https://firebase.google.com/products/firestore) to [Elastic App Search](https://www.elastic.co/app-search/).
+**IMPORTANT:** This extension is only compatible with ElasticSearch v7.x versions
 
-Out-of-the-box, Cloud Firestore provides no mechanism for full-text search on data. Syncing your Cloud Firestore data to Elastic App Search not only gives you a mechanism for full-text search on your data, it also lets you enjoy App Search's powerful relevance tuning features and search analytics data.
+This extension syncs data from Google's [Cloud Firestore](https://firebase.google.com/products/firestore) to [Elastic Search](https://www.elastic.co).
+
+Out-of-the-box, Cloud Firestore provides no mechanism for full-text search on data. Syncing your Cloud Firestore data to Elastic Search not only gives you a mechanism for full-text search on your data, it also lets you enjoy Elastic's powerful relevance tuning features and search analytics data.
 
 ## Install
 
 ### From the web
 
-Visit the following link: https://console.firebase.google.com/project/_/extensions/install?ref=elastic/firestore-elastic-app-search@0.4.1
+Visit the following link: https://console.firebase.google.com/project/_/extensions/install?ref=critical-match/elastic-firestore-extension@7.13.0
 
 ### From source
 

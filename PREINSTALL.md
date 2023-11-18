@@ -7,25 +7,25 @@ Learn more about writing a PREINSTALL.md file in the docs:
 https://firebase.google.com/docs/extensions/alpha/create-user-docs#writing-preinstall
 -->
 
-The Elastic App Search Firestore extension enables comprehensive [full-text search](https://firebase.google.com/docs/firestore/solutions/search) for your Firebase applications.
+The Elastic Firestore extension enables comprehensive [full-text search](https://firebase.google.com/docs/firestore/solutions/search) for your Firebase applications.
 
-This extension indexes and syncs the documents in a Cloud Firestore collection to an [Elastic App Search](https://www.elastic.co/app-search?ultron=firebase-extension&blade=preinstall&hulk=product) deployment by creating a Cloud Function which syncs changes in your collection on any [write event](https://firebase.google.com/docs/functions/firestore-events#function_triggers) (any time you create, update, or a delete a document).
+This extension indexes and syncs the documents in a Cloud Firestore collection to an [Elastic](https://www.elastic.co/app-search?ultron=firebase-extension&blade=preinstall&hulk=product) deployment by creating a Cloud Function which syncs changes in your collection on any [write event](https://firebase.google.com/docs/functions/firestore-events#function_triggers) (any time you create, update, or a delete a document).
 
-#### Elastic App Search
+#### Elastic
 
-Elastic App Search provides a comprehensive API for implementing common search patterns like auto-completed search suggestions and faceted filter navigation. You'll also have tooling so your team can easily track and tweak search relevance based on usage data.
+Elastic provides a comprehensive API for implementing common search patterns like auto-completed search suggestions and faceted filter navigation. You'll also have tooling so your team can easily track and tweak search relevance based on usage data.
 
-App Search is a part of [Elastic Enterprise Search](https://www.elastic.co/guide/en/enterprise-search/current/installation.html). You'll need an Enterprise Search deployment, which is created and maintained outside of Firebase. 
+Elastic is a part of [Elastic Enterprise Search](https://www.elastic.co/guide/en/enterprise-search/current/installation.html). You'll need an Enterprise Search deployment, which is created and maintained outside of Firebase. 
 
 #### Getting started
 
 1. Start an Enterprise Search deployment. You can provision one easily with [Elastic Cloud on GCP](https://console.cloud.google.com/marketplace/product/endpoints/elasticsearch-service.gcpmarketplace.elastic.co).
-2. Once you have a deployment running, you'll need an [App Search Engine](https://www.elastic.co/guide/en/app-search/current/getting-started.html#getting-started-with-app-search-engine) to sync to your collection.
-3. Once you've installed the extension and your Firestore collection is synced to App Search, you're ready to [start searching](https://www.elastic.co/guide/en/app-search/current/search-guide.html)!
+2. Once you have a deployment running, you'll need an [Elastic Engine](https://www.elastic.co/guide/en/app-search/current/getting-started.html#getting-started-with-app-search-engine) to sync to your collection.
+3. Once you've installed the extension and your Firestore collection is synced to Elastic, you're ready to [start searching](https://www.elastic.co/guide/en/app-search/current/search-guide.html)!
 
-You can use the App Search [Search API](https://www.elastic.co/guide/en/app-search/current/search.html) for full-text search and everything you need to build a complete search experience: facets, filters, click analytics, query suggestion, relevance tuning and much more.
+You can use the Elastic [Search API](https://www.elastic.co/guide/en/app-search/current/search.html) for full-text search and everything you need to build a complete search experience: facets, filters, click analytics, query suggestion, relevance tuning and much more.
 
-If you have documents in your collection already, this extension also provides a [script](https://github.com/elastic/app-search-firestore-extension/tree/master/functions/src/bin) for backfilling existing data to App Search.
+If you have documents in your collection already, this extension also provides a [script](https://github.com/elastic/app-search-firestore-extension/tree/master/functions/src/bin) for backfilling existing data to Elastic.
 
 <!-- We recommend keeping the following section to explain how billing for Firebase Extensions works -->
 
@@ -41,4 +41,4 @@ To install an extension, your project must be on the [Blaze (pay as you go) plan
 
 If you host your Elastic Enterprise Search instance on Elastic Cloud, you will also be responsible for charges associated with that service.
 
-[Learn more about Elastic Cloud](https://www.elastic.co/cloud?ultron=firebase-extension&blade=preinstall&hulk=product).
+[Learn more about Elastic Cloud](https://www.elastic.co/cloud).

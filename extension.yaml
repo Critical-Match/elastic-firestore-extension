@@ -2,7 +2,7 @@
 # https://firebase.google.com/docs/extensions/reference/extension-yaml
 
 name: elastic-firestore-extension # Identifier for your extension
-version: 0.1.0  # Semantic versioning (semver)
+version: 7.13.0  # Semantic versioning (semver)
 specVersion: v1beta # Version of the Firebase Extensions specification
 
 # Friendly display name for your extension (~3-5 words)
@@ -10,7 +10,7 @@ displayName: Connect Firestore with Elastic Search
 
 # Brief description of the task your extension performs (~1 sentence)
 description: >-
-  Syncs documents from a Firestore collection to Elastic App Search to enable full-text search.
+  Syncs documents from a Firestore collection to Elastic to enable full-text search.
 
 license: Apache-2.0 # https://spdx.org/licenses/
 
@@ -118,37 +118,37 @@ params:
   - param: COLLECTION_PATH
     label: Collection path
     description: >
-      The path to the collection that you want to sync to App Search.
+      The path to the collection that you want to sync to Elastic.
     example: movies
     validationRegex: "^[^/]+(/[^/]+/[^/]+)*$"
     validationErrorMessage: Must be a valid Cloud Firestore Collection
     required: true
 
-  - param: APP_SEARCH_ENGINE
-    label: Elastic App Search engine name
+  - param: ELASTIC_INDEX
+    label: Elastic Index name
     description: >
-      The name of the Elastic App Search "engine" you want to sync to your collection.
+      The name of the Elastic index you want to sync to your collection.
     example: movies
     required: true
 
-  - param: APP_SEARCH_URL
-    label: Elastic App Search URL
+  - param: ELASTIC_URL
+    label: Elastic URL
     description: >-
-      The base URL of your Elastic App Search deployment.
+      The base URL of your Elastic deployment.
     example: https://example-api-host.com
     required: true
 
-  - param: APP_SEARCH_API_KEY
-    label: Elastic App Search API Key
+  - param: ELASTIC_API_KEY
+    label: Elastic API Key
     description: >-
-      The API Key for your Elastic App Search deployment.
+      The API Key for your Elastic deployment.
     example: search-soaewu2ye6uc45dr8mcd54v6
     required: true
 
-  - param: APP_SEARCH_API_SECRET
-    label: Elastic App Search API Secret
+  - param: ELASTIC_API_SECRET
+    label: Elastic API Secret
     description: >-
-      The API Secret for your Elastic App Search deployment.
+      The API Secret for your Elastic deployment.
     example: private-79iadc5dzd3qxgfgd9w9ryc7
     type: secret
     required: true
@@ -156,7 +156,7 @@ params:
   - param: INDEXED_FIELDS
     label: Indexed fields
     description: >-
-      A comma separated list of the fields to index from your collection. Only the fields listed will be synced and searchable in App Search. You can specify [fields nested](https://github.com/elastic/app-search-firestore-extension/blob/master/POSTINSTALL.md#nested-fields) in maps with underscores: `field__subField`, 
-      and [new names for fields](https://github.com/Critical-Match/elastic-firestore-extension/blob/master/POSTINSTALL.md#field-name-compatibility-and-renaming) in App Search using a double colon: `PreviousName::newname`.
+      A comma separated list of the fields to index from your collection. Only the fields listed will be synced and searchable in Elastic. You can specify [fields nested](https://github.com/elastic/app-search-firestore-extension/blob/master/POSTINSTALL.md#nested-fields) in maps with underscores: `field__subField`, 
+      and [new names for fields](https://github.com/Critical-Match/elastic-firestore-extension/blob/master/POSTINSTALL.md#field-name-compatibility-and-renaming) in Elastic using a double colon: `PreviousName::newname`.
     example: producer,director__name,year
     required: true

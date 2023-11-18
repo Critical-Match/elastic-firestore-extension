@@ -7,7 +7,7 @@ import { Client } from "@elastic/elasticsearch";
 const elasticClient = getElasticClient();
 
 const firestoreCollection = process.env.COLLECTION_PATH;
-const elasticEngine = process.env.APP_SEARCH_ENGINE;
+const elasticEngine = process.env.ELASTIC_INDEX;
 
 if (!elasticEngine || !firestoreCollection) {
 	throw new Error("Elasticsearch configuration is incomplete. Please check the environment variables.");

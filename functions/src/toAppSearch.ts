@@ -38,7 +38,7 @@ export const toAppSearch = (
 
 		if (fieldValue === undefined) return acc;
 
-		// App Search only supports lowercased alpha numeric names or underscores
+		// Elastic only supports lowercased alpha numeric names or underscores
 		const processedFieldName = (renameTo || parsedFieldName)
 			.replace(/[^A-Za-z0-9_]/g, "")
 			.toLowerCase();
@@ -70,7 +70,7 @@ export const toAppSearch = (
 			return {
 				...acc,
 				[processedFieldName]: fieldValue.reduce((acc, arrayFieldValue) => {
-					// App search does not support nested arrays, so ignore nested arrays
+					// Elastic does not support nested arrays, so ignore nested arrays
 					if (Array.isArray(arrayFieldValue)) return acc;
 
 					if (isDate(arrayFieldValue)) {
