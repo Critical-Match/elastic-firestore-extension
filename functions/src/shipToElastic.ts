@@ -1,8 +1,8 @@
 import * as functions from "firebase-functions";
 import { toAppSearch } from "./toAppSearch";
-import { Client } from "@elastic/enterprise-search";
 
 import { getElasticClient } from "./utils";
+import { Client } from "@elastic/elasticsearch";
 
 const elasticClient = getElasticClient();
 
@@ -25,12 +25,13 @@ export const handler = (client: Client) => {
 		if (change.before.exists === false) {
 			functions.logger.info(`Creating document`, { id: change.after.id });
 			try {
-				client.app.indexDocuments({
-					engine_name: elasticEngine,
-					documents: [{
+				client.create({
+					id: change.after.id,
+					index: elasticEngine,
+					document: {
 						id: change.after.id,
 						...toAppSearch(change.after.data())
-					}]
+					}
 				});
 			} catch (e) {
 				functions.logger.error(`Error while creating document`, {
@@ -41,11 +42,9 @@ export const handler = (client: Client) => {
 		} else if (change.after.exists === false) {
 			functions.logger.info(`Deleting document`, { id: change.before.id });
 			try {
-				client.app.deleteDocuments({
-					engine_name: elasticEngine,
-					documentIds: [
-						change.before.id,
-					]
+				client.delete({
+					id: change.before.id,
+					index: elasticEngine
 				});
 			} catch (e) {
 				functions.logger.error(`Error while deleting document`, {
@@ -56,14 +55,14 @@ export const handler = (client: Client) => {
 		} else {
 			functions.logger.info(`Updating document`, { id: change.after.id });
 			try {
-
-				client.app.indexDocuments({
-					engine_name: elasticEngine,
-					documents: [{
+				client.update({
+					id: change.after.id,
+					index: elasticEngine,
+					doc: {
 						id: change.after.id,
 						...toAppSearch(change.after.data())
-					}]
-				});
+					}
+				})
 			} catch (e) {
 				functions.logger.error(`Error while updating document`, {
 					id: change.after.id,

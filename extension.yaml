@@ -44,7 +44,7 @@ roles:
 # Learn more in the docs: https://firebase.google.com/docs/extensions/reference/extension-yaml#resources-field
 resources:
   - name: shipToElastic
-    type: firebaseextensions.v1beta.v2function
+    type: firebaseextensions.v1beta.function
     description: >-
       Function triggered on Create, Update, or Delete of a document in the specified collection which syncs the change
       to Elastic.
