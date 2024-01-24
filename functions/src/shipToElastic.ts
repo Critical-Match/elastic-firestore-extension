@@ -6,9 +6,9 @@ import { Client } from "@elastic/elasticsearch";
 const elasticClient = getElasticClient();
 
 const firestoreCollection = process.env.COLLECTION_PATH;
-const elasticEngine = process.env.ELASTIC_INDEX;
+const elasticIndex = process.env.ELASTIC_INDEX;
 
-if (!elasticEngine || !firestoreCollection) {
+if (!elasticIndex || !firestoreCollection) {
 	throw new Error("Elasticsearch configuration is incomplete. Please check the environment variables.");
 }
 
@@ -26,7 +26,7 @@ export const handler = (client: Client) => {
 			try {
 				client.index({
 					id: change.after.id,
-					index: elasticEngine,
+					index: elasticIndex,
 					body: {...change.after.data()}
 				});
 			} catch (e) {
@@ -40,7 +40,7 @@ export const handler = (client: Client) => {
 			try {
 				client.delete({
 					id: change.before.id,
-					index: elasticEngine
+					index: elasticIndex
 				});
 			} catch (e) {
 				functions.logger.error(`Error while deleting document`, {
@@ -53,7 +53,7 @@ export const handler = (client: Client) => {
 			try {
 				client.index({
 					id: change.after.id,
-					index: elasticEngine,
+					index: elasticIndex,
 					body: {...change.after.data()}
 				});
 			} catch (e) {

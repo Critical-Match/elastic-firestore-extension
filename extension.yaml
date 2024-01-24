@@ -61,6 +61,24 @@ resources:
         resource: projects/${PROJECT_ID}/databases/(default)/documents/${COLLECTION_PATH}/{documentId}
       runtime: "nodejs18"
 
+  - name: triggerBulkImport
+    type: firebaseextensions.v1beta.function
+    description: >-
+      A function that backfills data from a Firestore collection into Elastic,
+      triggered when a Firestore document with the path `elastic_sync/backfill` has the contents of `trigger: true`.
+    properties:
+      # LOCATION is a user-configured parameter value specified by the user during installation.
+      location: ${LOCATION}
+      # https://cloud.google.com/functions/docs/reference/rest/v1/projects.locations.functions#EventTrigger
+      eventTrigger:
+        # Various event types for Firestore are listed here: https://firebase.google.com/docs/extensions/alpha/construct-functions
+        eventType: providers/cloud.firestore/eventTypes/document.write
+        # Parameters like PROJECT_ID are autopopulated: https://firebase.google.com/docs/extensions/alpha/parameters#auto-populated-parameters
+        # Note, the id is a wildcard path parameter, which can be read from the collection
+        # https://firebase.google.com/docs/firestore/extend-with-functions#wildcards-parameters
+        resource: projects/${PROJECT_ID}/databases/(default)/documents/elastic_sync/backfill
+      runtime: "nodejs18"
+
 # In the `params` field, set up your extension's user-configured parameters.
 # Learn more in the docs: https://firebase.google.com/docs/extensions/reference/extension-yaml#params-field
 params:
@@ -151,12 +169,4 @@ params:
       The API Secret for your Elastic deployment.
     example: private-79iadc5dzd3qxgfgd9w9ryc7
     type: secret
-    required: true
-
-  - param: INDEXED_FIELDS
-    label: Indexed fields
-    description: >-
-      A comma separated list of the fields to index from your collection. Only the fields listed will be synced and searchable in Elastic. You can specify [fields nested](https://github.com/elastic/app-search-firestore-extension/blob/master/POSTINSTALL.md#nested-fields) in maps with underscores: `field__subField`, 
-      and [new names for fields](https://github.com/Critical-Match/elastic-firestore-extension/blob/master/POSTINSTALL.md#field-name-compatibility-and-renaming) in Elastic using a double colon: `PreviousName::newname`.
-    example: producer,director__name,year
     required: true
